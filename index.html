@@ -6,27 +6,30 @@
 
     </head>
     <body>
-        <h1>EXPENSE TRACKER</h1>
+        <div class="container">
+        <h1>💸EXPENSE TRACKER💸</h1>
         <div>
-            <label>AMOUNT</label>
-            <input type="number"><br>
+            <label>🎀AMOUNT🎀</label>
+            <input type="number" id="amount"><br>
             </div>
             <div>
             <label>CATEGORY</label>
-            <select>
-                <option>Food</option>
-                <option>travel</option>
-                <option>Shopping</option>
+            <select id="category">
+                <option>Food🍔</option>
+                <option>travel✈️</option>
+                <option>Shopping🛍️ </option>
             </select>
             </div>
             <div>
-            <label>DATE</label>
-            <input type="date">
+            <label>DATE📅</label>
+            <input type="date" id="date">
             </div>
             <div>
-                <button>ADD EXPENSE</button>
+                <button id="mybutton">ADD EXPENSE➕</button>
             </div>
-        
+            <div id="expenses"></div>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>
 
