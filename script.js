@@ -6,7 +6,15 @@ button.addEventListener("click",function(){
     let category=document.getElementById("category").value
     let date=document.getElementById("date").value
     let expenses=document.getElementById("expenses");
-    expenses.innerHTML+=amount+'|'+category+'|'+date+"<br>";
+    let card=document.createElement("div");
+    card.className="card";
+    card.innerHTML=`
+    <h3>${category}</h3>
+    <p>💰 Amount: ₹${amount}</p>
+    <p>📅 Date:${date}</p>
+    `
+    expenses.appendChild(card);
+   
     console.log(amount);
     console.log(category);
     console.log(date);
