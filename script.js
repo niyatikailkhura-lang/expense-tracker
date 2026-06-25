@@ -12,7 +12,11 @@ button.addEventListener("click",function(){
     <h3>${category}</h3>
     <p>💰 Amount: ₹${amount}</p>
     <p>📅 Date:${date}</p>
+    <button class="delete-button">delete🗑️</button>
     `
+    card.querySelector(".delete-button").addEventListener("click",function(){
+        card.remove();
+    });
     expenses.appendChild(card);
    
     console.log(amount);
