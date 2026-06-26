@@ -14,6 +14,10 @@ button.addEventListener("click",function(){
     <p>📅 Date:${date}</p>
     <button class="delete-button">delete🗑️</button>
     `
+    if(amount=="" || date=="" || category==""){
+        alert("please fill complete details");
+        return;
+    }
     card.querySelector(".delete-button").addEventListener("click",function(){
         card.remove();
     });
