@@ -1,5 +1,6 @@
-
-console.log("js is working");
+localStorage.setItem("test", "Hello");
+let expenselist=JSON.parse(localStorage.getItem("expenses"))||[];
+console.log(expenselist);
 let button=document.getElementById("mybutton");
 button.addEventListener("click",function(){
     let amount=document.getElementById("amount").value
@@ -14,14 +15,24 @@ button.addEventListener("click",function(){
     <p>📅 Date:${date}</p>
     <button class="delete-button">delete🗑️</button>
     `
+   
     if(amount=="" || date=="" || category==""){
         alert("please fill complete details");
         return;
     }
+     let expense={
+        amount:Number(amount),
+        category:category,
+        date:date};
+        expenselist.push(expense);
+        console.log(expenselist);
+        console.log(JSON.stringify(expenselist));
+        localStorage.setItem("expenses",JSON.stringify(expenselist));
     card.querySelector(".delete-button").addEventListener("click",function(){
         card.remove();
     });
     expenses.appendChild(card);
+    localStorage.setItem("test","hello");
    
     console.log(amount);
     console.log(category);
