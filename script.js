@@ -2,8 +2,12 @@ localStorage.setItem("test", "Hello");
 let expenselist=JSON.parse(localStorage.getItem("expenses"))||[];
 let expenses=document.getElementById("expenses");
 console.log(expenselist);
+let total=0;
+let totalElement = document.getElementById("total");
 for(let i=0;i<expenselist.length;i++){
     let expense=expenselist[i];
+    total += expense.amount;
+    totalElement.textContent = `Total: ₹${total}`;
     let card=document.createElement("div");
     card.className="card";
     card.innerHTML=`
@@ -13,11 +17,14 @@ for(let i=0;i<expenselist.length;i++){
     <button class="delete-button">delete🗑️</button>`
      card.querySelector(".delete-button").addEventListener("click",function(){
         expenselist.splice(i, 1);
+        total -= expense.amount;
         localStorage.setItem("expenses", JSON.stringify(expenselist));
+        totalElement.textContent = `Total: ₹${total}`;
         card.remove();
     });
     expenses.appendChild(card);
 }
+totalElement.textContent=`Total: ₹${total}`;
 let button=document.getElementById("mybutton");
 button.addEventListener("click",function(){
     let amount=document.getElementById("amount").value
