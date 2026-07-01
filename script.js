@@ -14,14 +14,21 @@ for(let i=0;i<expenselist.length;i++){
     <h3>${expense.category}</h3>
      <p>💰 Amount: ₹${expense.amount}</p>
     <p>📅 Date:${expense.date}</p>
-    <button class="delete-button">delete🗑️</button>`
+    <button class="delete-button">delete🗑️</button>
+    
+     `
      card.querySelector(".delete-button").addEventListener("click",function(){
         expenselist.splice(i, 1);
-        total -= expense.amount;
+        total = 0;
+for (let i = 0; i < expenselist.length; i++) {
+    total += expenselist[i].amount;
+}
+totalElement.textContent = `Total: ₹${total}`;
         localStorage.setItem("expenses", JSON.stringify(expenselist));
         totalElement.textContent = `Total: ₹${total}`;
         card.remove();
     });
+   
     expenses.appendChild(card);
 }
 totalElement.textContent=`Total: ₹${total}`;
@@ -38,8 +45,9 @@ button.addEventListener("click",function(){
     <p>💰 Amount: ₹${amount}</p>
     <p>📅 Date:${date}</p>
     <button class="delete-button">delete🗑️</button>
+    
     `
-   
+  
     if(amount=="" || date=="" || category==""){
         alert("please fill complete details");
         return;
@@ -49,12 +57,18 @@ button.addEventListener("click",function(){
         category:category,
         date:date};
         expenselist.push(expense);
+        total = 0;
+for (let i = 0; i < expenselist.length; i++) {
+    total += expenselist[i].amount;
+}
+totalElement.textContent = `Total: ₹${total}`;
         console.log(expenselist);
         console.log(JSON.stringify(expenselist));
         localStorage.setItem("expenses",JSON.stringify(expenselist));
     card.querySelector(".delete-button").addEventListener("click",function(){
         card.remove();
     });
+    
     expenses.appendChild(card);
     localStorage.setItem("test","hello");
    
@@ -62,3 +76,11 @@ button.addEventListener("click",function(){
     console.log(category);
     console.log(date);
 });
+ let clear=document.getElementById("clear");
+   clear.addEventListener("click",function(){
+    expenselist=[];
+    totalElement.textContent="Total:₹0"
+    localStorage.removeItem("expenses");
+    expenses.innerHTML="";
+    total=0;
+   });
